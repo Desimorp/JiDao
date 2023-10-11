@@ -1,0 +1,43 @@
+#include<stdio.h>
+
+struct DataType{
+	char a;
+	short b;
+	int c;
+	long d;
+	long long e;
+	float f;
+	double g;
+};
+
+struct DataType inPut();
+void outPut(struct DataType X);
+
+int main() {
+	struct DataType Jok;
+	Jok = inPut();
+	outPut(Jok);
+	return 0;
+}
+
+struct DataType inPut() {
+	struct DataType X;
+	scanf("%c", &X.a);
+	scanf("%hd", &X.b);
+	scanf("%d", &X.c);
+	scanf("%ld", &X.d);
+	scanf("%lld", &X.e);
+	scanf("%f", &X.f);
+	scanf("%lf", &X.g);
+	return X;
+}
+
+void outPut(struct DataType X) {
+	printf("The 'char' variable is %c, it takes %zu byte.\n", X.a, sizeof(char));
+	printf("The 'short' variable is %hd, it takes %zu bytes.\n", X.b, sizeof(short));
+	printf("The 'int' variable is %d, it takes %zu bytes.\n", X.c, sizeof(int));
+	printf("The 'long' variable is %ld, it takes %zu bytes.\n", X.d, sizeof(long));
+	printf("The 'long long' variable is %lld, it takes %zu bytes.\n", X.e, sizeof(long long));
+	printf("The 'float' variable is %f, it takes %zu bytes.\n", X.f, sizeof(float));
+	printf("The 'double' variable is %lf, it takes %zu bytes.", X.g, sizeof(double));
+}
