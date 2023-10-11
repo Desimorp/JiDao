@@ -1,0 +1,13 @@
+#include<stdio.h>
+
+#define PI 3.14159265
+#define S(x) ( PI*x*x )
+#define C(x) ( 2*PI*x )
+#define Print( a, b ) printf("The perimeter is %.4lf, the area is %.4lf.", a, b)
+
+int main() {
+	double R;
+	scanf("%lf", &R);
+	Print(C(R), S(R));
+	return 0;
+}
