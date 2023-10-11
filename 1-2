@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+struct Person{
+	float height;
+	int age;
+	char sex;
+};
+
+struct Person inPut();
+void outPut( struct Person X);
+
+int main() {
+	struct Person Jok;
+	Jok = inPut();
+	outPut( Jok );
+	return 0;
+}
+
+struct Person inPut() {
+	struct Person X;
+	scanf("%c", &X.sex);
+	scanf("%d", &X.age);
+	scanf("%f", &X.height);
+	return X;
+}
+
+void outPut(struct Person X) {
+	printf("The sex is %c, the age is %d, and the height is %f.", X.sex, X.age, X.height);
+}
