@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+int main()
+{
+	int x, i = 0, j = 0, k = 0, y = 0;
+	scanf("%d", &x);
+	while (x != 0)
+	{
+		if (x % 3 == 0 && !(x % 5 == 0) && !(x % 7 == 0))
+			i++;
+		else if (!(x % 3 == 0) && (x % 5 == 0) && !(x % 7 == 0))
+			j++;
+		else if (!(x % 3 == 0) && !(x % 5 == 0) && (x % 7 == 0))
+			k++;
+		else
+			y++;
+		scanf("%d", &x);
+	}
+	float Y = (float)y;
+	float a, b, c;
+	a = 100*i / (i + j + k + Y);
+	b = 100*j / (i + j + k + Y);
+	c = 100*k / (i + j + k + Y);
+	printf("%.2f%%\n%.2f%%\n%.2f%%\n", a, b, c);
+	return 0;
+}
