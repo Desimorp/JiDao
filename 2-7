@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int main() {
+	char x;
+	int a = 0, b = 0, c = 0, d = 0;
+	scanf("%c", &x);
+	while (x != '\n') {
+		if (x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z')
+			a++;
+		else if (x == ' ')
+			b++;
+		else if (x >= '0' && x <= '9')
+			c++;
+		else
+			d++;
+		scanf("%c", &x);
+	}
+	printf("%d %d %d %d", a, b, c, d);
+	return 0;
+}
