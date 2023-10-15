@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<math.h>
+int main() {
+	double S, a, b, c;
+	scanf("%lf %lf %lf", &a, &b, &c);
+	S = (a + b + c) / 2;
+	if (a + b <= c || a + c <= b || b + c <= a)
+		printf("The edges cannot make up of a triangle.");
+	else
+		printf("%.3lf", sqrt(S * (S - a) * (S - b) * (S - c)));
+	return 0;
+}
