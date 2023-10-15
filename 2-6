@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main() {
+	int a, b;
+	scanf("%d %d", &a, &b);
+	if ((a > 20 && b > 20)||(a>22)||(b>22))
+		printf("error");
+	else if (a == b)
+		printf("no result");
+	else if (a > b)
+		printf("A win");
+	else
+		printf("B win");
+	return 0;
+}
