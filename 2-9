@@ -1,0 +1,26 @@
+//数值溢出（n == 3000）,逐步计算
+#include<stdio.h>
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	printf("%lld", (n - 2) * (n - 1) * (n) * (n + 1) * (n + 2)/ 20);
+	return 0;
+}
+
+//利用循环
+#include<stdio.h>
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	long long Sn = 1;
+	for (int i = n - 2; i < n + 3; i++)
+	{
+		Sn *= i;
+	}
+	printf("%lld", Sn/20);
+	return 0;
+}
