@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() 
+{
+    char t, w = 0, s = 0;
+    scanf("%c", &t);
+    while (t != '\n')
+    {
+        s++;
+        if (t == 'W')
+            w++;
+        else
+            ;
+        scanf("%c", &t);
+    }
+    float S = (float) s;
+    printf("%.2f", w / S);
+    return 0;
+}
