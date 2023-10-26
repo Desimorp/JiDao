@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int main()
+{
+	int sco;
+	scanf("%d", &sco);
+	if (sco < 0 || sco > 100)
+		printf("The score is out of range!");
+	else if (sco < 60)
+		printf("E");
+	else if (sco < 70)
+		printf("D");
+	else if (sco < 80)
+		printf("C");
+	else if (sco < 90)
+		printf("B");
+	else
+		printf("A");
+	return 0;
+}
