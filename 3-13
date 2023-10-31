@@ -1,0 +1,33 @@
+#include<stdio.h>
+int max(int m, int n) {
+    if (m == 0)
+        return n;
+    if (n == 0)
+        return m;
+    if (m == n)
+        return m;
+
+    if ((m & 1) == 0) {
+        if ((n & 1) == 0)
+            return max(m >> 1, n >> 1) << 1;
+        else
+            return max(m >> 1, n);
+    }
+
+    if ((n & 1) == 0)
+        return max(m, n >> 1);
+
+    if (m > n)
+        return max((m - n) >> 1, n);
+
+    return max((n - m) >> 1, m);
+}
+int min(int m, int n) {
+    return n / max(m, n) * m;//先计算m*n出现溢出危险，考虑到为公约数其实谁先除都不会出现精度损失
+}
+int main() {
+	int m, n;
+	scanf("%d %d", &m, &n);
+	printf("%d %d", max(m, n), min(m, n));
+	return 0;
+}
