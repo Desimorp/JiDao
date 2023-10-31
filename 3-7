@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main() {
+	char t;
+	scanf("%c", &t);
+	while (t != '\n') {
+		printf("%c", t);
+		scanf("%c", &t);
+		if (t == '\n')
+			printf("\n");
+		else
+			printf(" ");
+	}
+	return 0;
+}
