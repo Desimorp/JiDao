@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<math.h>
+double fac(long long n) {
+	if (n == 1.0 || n == 0.0)
+		return 1.0;
+	else
+		return n * fac(n - 1.0);
+}
+double ind(long long n, double x) {
+	if (n == 0)
+		return 1.0000;
+	else
+		return x * ind(n - 1, x);
+}
+int main() {
+	double x, y = 0;
+	long long n = 0;
+	scanf("%lf", &x);
+	while (fabs(ind(n, x) / fac(n) >= 1e-8)) {
+		y += ind(n, x) / fac(n);
+		n++;
+	}
+	printf("%.4lf", y);
+	return 0;
+}
