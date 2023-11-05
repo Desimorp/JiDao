@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int main() {
+	int m, n;//头 腿
+	scanf("%d %d", &m, &n);
+	for (int i = 0; i <= m; i++) {//鸡
+		for (int j = 0; j <= m ; j++) {//兔
+			for (int k = 0; k <= m ; k++){//蜻蜓
+				if ((i + j + k == m) && (2 * i + 4 * j + 6 * k == n))
+					printf("%d %d %d\n", i,  j, k);
+			}
+		}
+	}
+	return 0;
+}
+//优化循环次数
