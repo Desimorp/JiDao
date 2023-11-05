@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main(){
+    int n;
+    int i = 1;
+    int sum = 0;
+    scanf("%d", &n);
+    while(n != 0){
+        sum += (n % 10) * i;
+        n /= 10;
+        i *= 2;
+    }
+    printf("%d", sum);
+    return 0;
+}
