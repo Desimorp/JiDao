@@ -2,15 +2,15 @@
 
 int main()
 {
-    long long i = 1, j = 1, sb = 0;
+    long long i = 1, j = 1, b = 0;
     long long n = 0;
     scanf("%lld" ,& n);
-    for (int tang_yao_huan = 0; tang_yao_huan < n - 2; tang_yao_huan++) 
+    for (int a = 0; a < n - 2; a++) 
     {
-        sb = (i + j) % 101;
+        b = (i + j) % 101;
         i = j % 101;
         j = sb;
     }
-    printf("%d", sb%101);
+    printf("%d", b%101);
     return 0;
 }
