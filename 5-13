@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+//将n进制转换为m进制 
+int numConvert(int, int, int);
+
+int main()
+{
+    int        number, m, n;
+
+    scanf("%d%d%d", &number, &n, &m);
+
+    printf("%d\n", numConvert(number, n, m));
+    return 0;
+}
+
+
+/* 请在这里填写答案 */
+int numConvert(int x, int y, int z)
+{
+    int result = 0;
+    int power = 1;
+    int dec = 0;
+    while(x != 0)
+    {
+        dec += power * (x % 10);
+        power *= y;
+        x /= 10;
+    }
+    power = 1;
+    while(dec != 0)
+    {
+        result += (dec%z) * power;
+        power *= 10;
+        dec /= z;
+    }
+    return result;
+}
