@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main()
+{
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    int freq = 0;
+    for (int i = 0; i <= (c / a); i++)
+        //明确循环目的
+        if (!((c - a * i) % b))//处理0 1转换问题
+            freq++;
+    printf("%d", freq);
+    return 0;
+}
