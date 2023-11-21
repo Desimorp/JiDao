@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+int    subRemainder( int num , int k ) ;
+
+int main()
+{
+    int        a , b , k , i ;
+
+    scanf( "%d%d%d" , &a , &b , &k );
+    for( i = a ; i <= b ; i++ )
+    {
+        if ( subRemainder( i , k ) )
+            printf( "%d\n" , i ) ;
+    }
+
+    return 0;
+}
+
+/* 请在这里填写答案 */
+int subRemainder( int num, int k )
+{
+    int sub1 = 0;
+    int sub2 = 0;
+    int sub3 = 0;
+    int op = num;
+    sub1 = op / 100;
+    sub2 = op / 10 - op / 10000 * 1000;
+    sub3 = op - op / 1000 * 1000;
+    if((sub1 % k) == (sub2 % k) && (sub2 % k) == (sub3 % k))
+        return 1;
+    else 
+        return 0;
+}
