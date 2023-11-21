@@ -1,0 +1,18 @@
+#include<stdio.h>
+
+int main(){
+    int n, m;
+    int k = 0;
+    scanf("%d %d", &n, &m);
+    int count = 0;
+    for(int i = m;i <= n;i++){
+        for(int j = i;j <= n;j++){
+            k = n - i - j;
+            if(k >= j && k <= n){
+                count++;
+            }
+        }
+    }
+    printf("%d\n", count);
+    return 0;
+}
