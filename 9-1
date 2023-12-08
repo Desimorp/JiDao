@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+int main(){
+	int lef = 0;
+	int rig = 0;
+	char t;
+	int s = 1;
+	scanf("%c", &t);
+	while(t != '\n'){
+		if(t == '(')
+			lef++;
+		else if(t == ')')
+			rig++;
+		if(lef >= rig)
+			s = 1;
+		if(rig > lef){ 
+			s = 0;
+			break;
+		}
+		scanf("%c", &t);
+	}
+	if((s == 1)&&(lef == rig))
+		printf("parentheses match!\n");
+	else
+		printf("parentheses do not match!\n");
+}
