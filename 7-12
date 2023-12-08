@@ -1,0 +1,34 @@
+#include<stdio.h>
+
+//插入排序（升序） 
+//参数说明：数组，数组中已有元素个数 
+void InsertSort(int a[],int n);
+
+int main()
+{
+    int        n , i,    num[1000] ;
+    
+    scanf( "%d" , &n ); 
+    for( i = 0 ; i < n ; i++ ) 
+        scanf( "%d", &num[i] ) ;
+    InsertSort( num , n ) ; 
+    return 0 ;
+}
+
+/* 请在这里填写答案 */
+void InsertSort(int a[],int n)
+{
+    for(int i = 1; i < n; i++){
+        int key = a[i];
+        int j = i - 1;
+        while(j >= 0 && a[j] > key){//取出a[i]利用空位前移
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+        for(int k = 0; k < n - 1; k++){
+            printf("%d ", a[k]);
+        }
+        printf("%d\n", a[n - 1]);
+    }
+}
