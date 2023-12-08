@@ -1,0 +1,52 @@
+#include<stdio.h>
+#define MAX 100
+
+void Input(int Matrix[][MAX],int n,int m){
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			scanf("%d",&Matrix[i][j]);
+		}
+	}
+}
+
+int Row(int Matrix[][MAX],int x,int m){
+	int pos = 0;
+	for(int i = 0; i < m; i++){
+		if(Matrix[x][i] > Matrix[x][pos]){
+			pos = i;
+		}
+	}
+	return pos;
+}
+void FindSaddle(int Matrix[][MAX],int n,int m){
+	int IsFind;
+	int x,y;
+	for(int i = 0; i < n; i++){
+		IsFind = 1;
+		int Max_pos = Row(Matrix,i,m);
+		for(int j = 0; j < n; j++){
+			if(Matrix[j][Max_pos] < Matrix[i][Max_pos]){
+				IsFind = 0;
+			}
+		}
+		if(IsFind){
+			x = i;
+			y = Max_pos;
+			break;
+		}
+	}
+	if(IsFind)
+		printf("The saddle point is (%d,%d)=%d.\n",x,y,Matrix[x][y]);
+	else
+		printf("There is no saddle point in the matrix.\n");
+}
+
+
+int main(){
+	int m,n;
+	scanf("%d%d",&n,&m);
+	int Matrix[MAX][MAX] = {0};
+	Input(Matrix,n,m);
+	FindSaddle(Matrix,n,m);
+	return 0;
+}
