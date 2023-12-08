@@ -1,0 +1,43 @@
+#include<stdio.h>
+
+void Calculate(int Salary){
+	int Pie;
+	int Rem;
+	Pie = Piece(Salary, 100);
+	Rem = Remain(Salary, 100);
+	Print(100, Pie);
+	Pie = Piece(Rem, 50);
+	Rem = Remain(Rem, 50);
+	Print(50, Pie);
+	Pie = Piece(Rem, 20);
+	Rem = Remain(Rem, 20);
+	Print(20, Pie);
+	Pie = Piece(Rem, 10);
+	Rem = Remain(Rem, 10);
+	Print(10, Pie);
+	Pie = Piece(Rem, 5);
+	Rem = Remain(Rem, 5);
+	Print(5, Pie);
+	Pie = Piece(Rem, 2);
+	Rem = Remain(Rem, 2);
+	Print(2, Pie);
+	Pie = Piece(Rem, 1);
+	Print(1, Pie);
+}
+int Piece(int rem, int den){
+	return rem / den;
+}
+int Remain(int rem, int den){
+	return rem % den;
+}
+void Print(int den, int pie){
+	if(pie)
+		printf("%d:%d\n", den, pie);
+}
+
+int main(){
+	int Salary = 0;
+	scanf("%d", &Salary);
+	Calculate(Salary);
+	return 0;
+}
