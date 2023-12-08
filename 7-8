@@ -1,0 +1,39 @@
+#include<stdio.h>
+
+int MaxSub(int* Array, int size){
+	int Max = Array[1];
+	for(int i = 2; i <= size; i++){
+		if(Array[i] > Max){
+			Max = Array[i];
+		}
+	}
+	return Max;
+}
+
+void Sub(int* Array, int size, int* Num){
+	int count = 1;
+	int j = 1;
+	for(int i = 0; i < size; i++){
+		if(Array[i] == Array[i+1]){
+			count++;
+		}
+		else{		
+			Num[j++] = count;
+			count = 1;
+		}
+	}
+	Num[0] = --j;
+	return ;
+}
+int main(){ 
+	int n;
+	scanf("%d",&n);
+	int Squ[1000];
+	for(int i = 0; i < n; i++){
+		scanf("%d",&Squ[i]);
+	}
+	int Num[1000] = { 0 };
+	Sub(Squ, n, Num);
+	printf("%d\n",MaxSub(Num,Num[0]));
+	return 0;
+}
