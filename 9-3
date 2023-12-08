@@ -1,0 +1,35 @@
+#include<stdio.h>
+
+int sta(char*a,char b, int size){
+	int num = 0;
+	for(int i = 0; i < size; i++){
+		if(a[i] == b){
+			num++;
+		}
+	}
+	return num;
+}
+
+void Print(char a, int times){
+	if(times == 0)
+		;
+	else
+		printf("The character %c has presented %d times.\n", a, times);
+}
+int main(){
+	char String[100];
+	char t;
+	scanf("%c", &t);
+	int size = 0;
+	while(t != '\n'){
+		String[size++] = t;
+		scanf("%c", &t);
+	}
+	for(int i = 0; i <= 51 ; i++){
+		if((i + 65) <= 90)
+			Print(i + 65, sta(String, i + 65, size));
+		else
+			Print(i + 65 + 6, sta(String, i + 65 + 6, size));//没打出来
+	}
+	return 0;
+}
