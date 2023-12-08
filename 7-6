@@ -1,0 +1,34 @@
+#include<stdio.h>
+void Init(int*Array, int Size){
+	for (int i = 0; i < Size; i++)
+	{
+		scanf("%d", &Array[i]);
+	}
+}
+void Exchange(int* Array, int pos1, int pos2){
+	int tem = Array[pos1];
+	Array[pos1] = Array[pos2];
+	Array[pos2] = tem;
+}
+void Print(int* Array, int size){
+	for (int i = 0; i < size; i++)
+	{
+		if(i == size -1)
+			printf("%d\n", Array[i]);
+		else
+			printf("%d ", Array[i]);
+	}
+}
+int main(){
+	int A[10] = { 0 };
+	int B[10] = { 0 };
+	int n;
+	scanf("%d", &n);
+	Init(A, n);
+	Init(B, n);
+	for(int i = 0; i < n; i++){
+		Exchange(A, i, B[i]);
+	}
+	Print(A, n);
+	return 0;
+}
