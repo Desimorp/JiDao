@@ -1,0 +1,20 @@
+#include<stdio.h>
+#define ROW 10
+#define COL 31
+
+int main(){
+    char String[ROW][COL] = {'\0'};
+    int n;
+    scanf("%d",&n);
+    for(int i = 0; i < n; i++){
+        scanf("%s",String[i]);
+    }
+    int Order[ROW] = {0};
+    for(int i = 0; i < n; i++){
+        scanf("%d",&Order[i]);
+    }
+    for(int i = 0; i < n; i++){
+        printf("%s\n",String[Order[i]]);
+    }
+    return 0;
+}
