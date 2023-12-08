@@ -1,0 +1,85 @@
+#include<stdio.h>
+#define MAX 100
+
+int main(){
+    int Matrix[MAX][MAX] = {};
+    int n;
+    scanf("%d",&n);
+    int col = 0, row = 0;
+    int direction = 0;
+    for(int num = 1; num <= n * n; num++){
+        if(direction == 0){//起点
+            Matrix[row][col] = num;
+            row++;
+            direction = 1;
+        }
+        else if(direction == 1){//下移一格
+            Matrix[row][col] = num;
+            if(col == 0){//左边界
+                row--;
+                col++;
+                direction = 2;
+            }
+            else if(col == n - 1){//右边界
+                row++;
+                col--;
+                direction = 4;
+            }
+        }
+        else if(direction == 2){//右上移动一格
+            Matrix[row][col] = num;
+            if(col == n - 1){
+                row++;
+                direction = 1;
+            }
+            else if(row == 0){
+                col++;
+                direction = 3;
+            }
+            else{
+                row--;
+                col++;
+                direction = 2;
+            }
+        }
+        else if(direction == 3){//右移一格
+            Matrix[row][col] = num;
+            if(row == 0){//上边界
+                row++;
+                col--;
+                direction =  4;
+            }
+            if(row == n - 1){//下边界
+                row--;
+                col++;
+                direction = 2;
+            }
+        }
+        else if(direction == 4){//左下移动一格
+            Matrix[row][col] = num;
+            if(row == n - 1){//下边界（含左下角）
+                col++;
+                direction = 3;
+            }
+            else if(col == 0){//左边界（不含左下角）
+                row++;
+                direction = 1;
+            }
+            else{
+                row++;
+                col--;
+                direction = 4;
+            }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            printf("%d", Matrix[i][j]);
+            if(j < n - 1)
+                printf(" ");
+            else
+                printf("\n");
+        }
+    }
+    return 0;
+}
