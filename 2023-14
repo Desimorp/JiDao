@@ -1,0 +1,41 @@
+#include<stdio.h>
+
+#define        LENA    128
+#define        LENB    16
+
+void recombination( char str1[] , char str2[] ) ;
+
+int main()
+{
+    char    str1[LENA] , str2[LENB] ;
+    
+    scanf( "%s%s" , str1 , str2 ) ;
+    recombination( str1 , str2 ) ;
+    printf( "%s\n" , str1 ) ;
+
+    return 0;
+} 
+
+
+/* 请在这里填写答案 */
+void recombination( char str1[], char str2[] )
+{
+    char str3[LENA + LENB] = {'\0'};
+    int LEN1 = 0;
+    int LEN2 = 0;
+    int LEN3 = 0;
+    while(str2[LEN2] != '\0'){
+        int fre = str2[LEN2] - '0';
+        while(fre > 0){
+            str3[LEN3++] = str1[LEN1++];
+            fre--;
+        }
+        str3[LEN3++] = str2[LEN2++];
+    }
+    while(str1[LEN1] != '\0'){
+        str3[LEN3++] = str1[LEN1++];
+    }
+    for(int i = 0; i <= LEN3; i++){
+        str1[i] = str3[i];
+    }
+}
