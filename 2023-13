@@ -1,0 +1,64 @@
+#include<stdio.h>
+
+#define LEN    10
+
+//校验函数 
+void check( int matrix[][LEN] , int sum_row[] , int sum_col[] , int rows , int cols ) ;
+
+int main()
+{
+    int        matrix[LEN][LEN] , sum_row[LEN] , sum_col[LEN] ;
+    int        i , j ;
+    for( i = 0 ; i < LEN ; i++ )//读入矩阵 
+    {    
+        for( j = 0 ; j < LEN ; j++ )
+        {
+            scanf( "%d" , &matrix[i][j] ) ;
+        }
+    }
+    for( i = 0 ; i < LEN ; i++ )//读入各行之和 
+    {
+        scanf( "%d" , &sum_row[i] ) ;
+    }
+    for( i = 0 ; i < LEN ; i++ )//读入各列之和
+    {
+        scanf( "%d" , &sum_col[i] ) ;
+    }
+    
+    check( matrix , sum_row , sum_col , LEN , LEN ) ;//校验     
+    
+    return 0 ;
+}
+
+/* 请在这里填写答案 */
+void check( int matrix[][LEN] , int sum_row[] , int sum_col[] , int rows , int cols ) {
+    //先检查行
+    int error_row = -1;
+    for(int i = 0; i < rows; i++){
+        int sumRow = 0;
+        for(int j = 0; j < cols; j++){
+            sumRow += matrix[i][j];
+        }
+        if(sumRow!= sum_row[i]){
+            error_row = i;
+        }
+    }
+    //再检查列
+    int error_col = -1;
+    for(int i = 0; i < cols; i++){
+        int sumCol = 0;
+        for(int j = 0; j < rows; j++){
+            sumCol += matrix[j][i];
+        }
+        if(sumCol!= sum_col[i]){
+            error_col = i;
+        }
+    }
+    //输出结果
+    if(error_row == -1 && error_col == -1){
+        printf("right\n");
+    }
+    else{
+        printf("%d %d %d\n", error_row, error_col, matrix[error_row][error_col]);
+    }
+}
