@@ -1,0 +1,35 @@
+#include<stdio.h>
+#define MAX_N 10000
+
+int IsOK(int Energy, int* Ene, int M, int N){
+    int sum = 0;
+    for(int i = 0; i < N; i++){
+        sum += Ene[i] / Energy;
+    }
+    if(sum >= M)
+        return 1;
+    else 
+        return 0;
+}
+int main()
+{
+    int N, M;
+    scanf("%d %d", &N, &M);
+    int Ene[MAX_N] = { 0 };
+    int Left = 0;
+    int Right = 100;
+    for(int i = 0; i < N; i++){
+        scanf("%d", &Ene[i]);
+        if(Ene[i] > Right)
+            Right = Ene[i];
+    }
+    while(Left < Right){
+        int Mid = 1 + Left + (Right - Left) / 2;
+        if(IsOK(Mid, Ene, M, N))
+            Left = Mid;
+        else
+            Right = Mid - 1;
+    }
+    printf("%d\n", Left);
+    return 0;
+} 
