@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    scanf("%d", &n);
+    int *page = (int*)malloc(n * sizeof(int));
+    for(int i = 0; i < n; i++){
+        scanf("%d", &page[i]);
+    }
+    for(int i = 0; i < n - 1; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(page[j + 1] < page[j]){
+                int temp = page[j + 1];
+                page[j + 1] = page[j];
+                page[j] = temp;
+            }
+        }
+    }
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        sum += page[i];
+        if(sum > 1000){
+            printf("%d\n", i);
+            break;
+        }
+    }
+    free(page);
+    return 0;
+}
