@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void paixu(char*a[],int n);
+int main(){
+    char* a[100];
+    char str[100000];
+    a[0]=str;
+    int n;
+    scanf("%d",&n);
+    getchar();
+    for(int i=0;i<n;i++){
+        gets(a[i]);
+        if(i!=n-1)
+        a[i+1]=a[i]+strlen(a[i])+1;
+        
+    }
+    paixu(a,n);
+    for(int i=0;i<n;i++){
+        puts(a[i]);
+    }
+    return 0;
+    
+}
+void paixu(char* a[], int n){
+    char * temp;
+    int min;
+    for(int i=0;i<n;i++){
+        min=i;
+        for(int j=i+1;j<n;j++){
+            if(strcmp(a[min],a[j])>0)
+                min=j;
+            
+        }
+        if(min!=i){
+            temp=a[i];
+            a[i]=a[min];
+            a[min]=temp;
+        }
+    }
+}
