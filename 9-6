@@ -1,0 +1,48 @@
+
+#include<stdio.h>
+
+#define        MAXLEN        110
+
+int        isPrime( int n ) ;//判断一个整数是否是质数，是则返回1，否则返回0 
+int        getResult( char word[] ) ;
+
+int main()
+{
+    char    word[MAXLEN] ;
+
+    scanf( "%s" , word ) ;            
+    printf( "%d\n" , getResult( word ) );
+
+    return 0;
+}
+
+/* 请在这里填写答案 */
+int getResult( char word[] ){
+    int fre[26] = {0};
+    int Len = 0;
+    while(word[Len]!= '\0'){
+        fre[word[Len]-'a']++;
+        Len++;
+    }
+    int max,min;
+    max = min = 0;
+    for(int i = 0; i < 26; i++){
+        if(fre[i] != 0){
+            if(max == 0 || min == 0){
+                max = min = fre[i];
+            }
+            else{
+                if(fre[i] > max){
+                    max = fre[i];
+                }
+                if(fre[i] < min){
+                    min = fre[i];
+                }
+            }
+        }
+    }
+    if(isPrime(max-min))
+        return max-min;
+    else
+        return -1;
+}
