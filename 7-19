@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int main(){
+    int n;
+    scanf("%d",&n);
+    int flag;
+    scanf("%d",&flag);
+    int Array[100];
+    for(int i = 0; i < n; i++){
+        scanf("%d",&Array[i]);
+    }
+    int Des[100];
+    if(flag == 1){
+        for(int i = 0; i < n; i++){
+            int Smaller = 0;
+            for(int j = 0; j < i; j++){
+                if(Array[j] < Array[i]){
+                    Smaller++;
+                }
+            }
+            Des[i] = Smaller;
+        }
+    }
+    if(flag == 2){
+        int Order[100];
+        for(int i = 0; i < n; i++){
+            Order[i] = i;
+        }
+        for(int i = n - 1; i >= 0; i--){
+            int pos = Array[i];
+            for(int j = 0; j <= pos; j++){
+                if(Order[j] == -1){
+                    pos++;
+                }
+            }
+            Des[i] = Order[pos];
+            Order[pos] = -1;
+        }
+    }
+    for(int i = 0; i < n; i++){
+        printf("%d",Des[i]);
+        if(i != n - 1){
+            printf(" ");
+        }
+        else{
+            printf("\n");
+        }
+    }
+    return 0;
+}
