@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+#define MAX 200
+int main(){
+    int a[MAX];
+    int n;
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        a[i] = i + 1;
+    }
+    for(int i = n - 2; i > 0; i--){
+        if(i >  n - 5){//单个
+            int temp = a[n - 1];
+            for(int j = n - 1; j < i; j++){//第x次移动x个
+                a[i + 1 + n - 1 - j] = a[i + n - 1 - j];
+            }
+        }
+        else{//两个
+            
+        }
+    }
+    return 0;
+}
