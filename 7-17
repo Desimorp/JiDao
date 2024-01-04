@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+#define MAX 100
+int main(){
+    int Matrix[MAX][MAX];
+    int n;
+    scanf("%d", &n);
+    int num = 1;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < 2 * i + 1; j++){
+            if(j <= i){
+                Matrix[j][i] = num++;
+            }
+            if(j > i){
+                Matrix[i][i + i - j] = num++;   
+            }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            printf("%d", Matrix[i][j]);
+            if(j < n - 1)
+                printf(" ");
+            else
+                printf("\n");
+        }
+    }
+    return 0;
+}
