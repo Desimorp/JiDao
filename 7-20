@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 1000
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    int **Data = (int**)malloc(n * sizeof(int*));
+    int* Order = (int*)malloc(n * sizeof(int));
+    for(int i = 0; i < n; i++){
+        Order[i] = i;
+        int num = 0;
+        scanf("%d", &num);
+        Data[i] = (int*)malloc((num + 2) * sizeof(int));
+        for(int j = 0; j < num + 2; j++){
+            if(j == 0){
+                Data[i][j] = num;//volumn
+            }
+            else if(j == 1){
+                Data[i][j] = 0;//average
+            }
+            else{
+                scanf("%d", &Data[i][j]);
+                Data[i][1] += Data[i][j];
+            }
+        }
+        Data[i][1] /= Data[i][0];
+    }
+    for(int i = 0; i < n - 1; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(Data[Order[j]][1] > Data[Order[j + 1]][1]){
+                int temp = Order[j];
+                Order[j] = Order[j + 1];
+                Order[j + 1] = temp;
+            }        
+        }
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 2; j < 2 + Data[Order[i]][0]; j++){
+            printf("%d", Data[Order[i]][j]);
+            if(j != 1 + Data[Order[i]][0]){
+                printf(" ");
+            }
+            else{
+                printf("\n");
+            }
+        }
+    }
+    return 0;
+}
