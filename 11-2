@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 100
+
+typedef struct{
+    char name[MAX];
+    char ID[MAX];
+    int score[5];
+    double average;
+    int total;
+}Stu, *StuPtr;
+
+int main(){
+    StuPtr jok = (StuPtr)malloc(sizeof(Stu));
+    jok->total = 0;
+    jok->average = 0;
+    int n;
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        getchar();
+        gets(jok->name);
+        gets(jok->ID);
+        for(int i = 0; i < 5; i++){
+            scanf("%d", &jok->score[i]);
+            jok->total += jok->score[i];
+        }
+        jok->average = (double)jok->total / 5;
+
+        printf("Name:%s\n", jok->name);
+        printf("ID:%s\n", jok->ID);
+        printf("Score:");
+        for(int i = 0; i < 5; i++){
+            printf("%d", jok->score[i]);
+            if(i!= 4)
+                printf(" ");
+            else
+                printf("\n");
+        }
+        printf("average:%.2lf total:%d\n\n", jok->average, jok->total);
+        jok->total = 0;
+        jok->average = 0;
+    }    
+    free(jok);
+    return 0;
+}
