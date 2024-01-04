@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+char ** create1(int n) ;
+void create2( char ** strPtr , int n ) ;
+void fill(char ** strPtr , int n) ;
+
+
+int main()
+{
+    int        n, i;
+    char**    strPtr ;
+
+    scanf("%d", &n );
+    strPtr = create1( n * 2 + 1 ) ;
+    create2( strPtr ,  n * 2 + 1 ) ;
+    fill(strPtr , n) ;
+
+    for (i = 0; i < 2 * n + 1; i++)
+    {
+        printf("%s\n" , strPtr[i]);
+    }
+    
+    for ( i = 0 ; i < n * 2 + 1 ; i++ )
+        free(strPtr[i]) ;
+    free(strPtr) ;
+
+    return 0;
+}
+
+/* 请在这里填写答案 */
+char** create1(int n){
+    char** strPtr = (char**)malloc(sizeof(char*) * n);
+    for(int i = 0; i < n; i++){
+        strPtr[i] = (char*)malloc(sizeof(char));
+    }
+    return strPtr;
+}
+void create2(char**strPtr, int n){
+    for(int i = 0; i < n; i++){
+        strPtr[i] = (char*)malloc(sizeof(char) * (n + 1));
+    }
+}
+void fill(char**strPtr, int n){
+    //先画‘X’
+    for(int i = 0; i <= n + 1; i++){
+        if(i == n){
+            strPtr[0][i] = 'X';
+            strPtr[2 * n][i] = 'X';
+        }
+        else if(i == n + 1){
+            strPtr[0][i] = '\0';
+            strPtr[2 * n][i] = '\0';
+        }
+        else{
+            strPtr[0][i] = ' ';
+            strPtr[2 * n][i] = ' ';
+        }
+    }
+    for(int i = 0; i < 2 * n + 2; i++){
+        if(i == 0 || i == 2 * n)
+            strPtr[n][i] = 'X';
+        else if(i == 2 * n + 1)
+            strPtr[n][i] = '\0';
+        else
+            strPtr[n][i] = ' ';
+    }
+    //再画斜杠
+    for(int i = 1; i < n; i++){
+        for(int j = 0; j <= n + i + 1; j++){
+            if(j == n - i){
+                strPtr[i][j] = '/';
+                strPtr[2 * n - i][j] = '\\';
+            }
+            else if(j == n + i){
+                strPtr[i][j] = '\\';
+                strPtr[2 * n - i][j] = '/';
+            }
+            else if(j == n + i + 1){
+                strPtr[i][j] = '\0';
+                strPtr[2 * n - i][j] = '\0';
+            }
+            else{
+                strPtr[i][j] = ' ';        
+                strPtr[2 * n - i][j] = ' ';
+            }
+        }
+    }   
+}
