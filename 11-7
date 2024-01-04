@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<string.h>
+
+typedef struct{
+    char ID[30];
+    char name[30];
+    int score[3];
+}student;
+
+int IsFind(student a[], int* size, char ID[]);
+void Add(student a[], int* size);
+void Delete(student a[], int* size);
+void Update(student a[], int* size);
+void Average(student a[], int* size);
+
+int main(){
+    student a[130];
+    int n;
+    scanf("%d",&n);
+    int value = 0;
+    int *size = &value;
+    for(int i = 0; i < n; i++){
+        int operation = 0;
+        scanf("%d", &operation);
+        switch (operation)
+        {
+            case 1:
+                Add(a, size);
+                break;
+            case 2:
+                Delete(a, size);
+                break;
+            case 3:
+                Update(a, size);
+                break;
+            case 4:
+                Average(a, size);
+                break;
+            default:
+                printf("sb\n");
+                break;
+        }
+    }
+    return 0;
+}
+
+int IsFind(student a[], int* size, char ID[]){
+    for(int i = 0; i < *size; i++){
+        if(strcmp(a[i].ID, ID) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Add(student a[], int* size){
+    char card[30];
+    scanf("%s", card);
+    int pos = IsFind(a, size, card);
+    if(pos != -1){
+        printf("Students already exist\n");
+        int t1, t2, t3;
+        scanf("%s%d%d%d", card,&t1, &t2, &t3);
+    }
+    else{
+        strcpy(a[*size].ID, card);
+        scanf("%s", a[*size].name);
+        for(int i = 0; i < 3; i++){
+            scanf("%d", &(a[*size].score[i]));
+        }
+        (*size)++;
+        printf("Add success\n");
+    }
+}
+
+void Delete(student a[], int* size){
+    char card[30];
+    scanf("%s", card);
+    int pos = IsFind(a, size, card);
+    if(pos == -1){
+        printf("Students do not exist\n");
+    }
+    else{
+        while(pos < *size - 1){
+            a[pos] = a[pos + 1];
+            pos++;
+        }
+        (*size)--;
+        printf("Delete success\n");
+    }
+}
+
+void Update(student a[], int* size){
+    char card[30];
+    scanf("%s", card);
+    int pos = IsFind(a, size, card);
+    if(pos == -1){
+        printf("Students do not exist\n");
+        int t1, t2, t3;
+        scanf("%d%d%d", &t1, &t2, &t3);
+    }
+    else{
+        for(int i = 0; i < 3; i++){
+            scanf("%d", &a[pos].score[i]);
+        }
+        printf("Update success\n");
+    }
+}
+
+void Average(student a[], int* size){
+    char card[30];
+    scanf("%s", card);
+    int pos = IsFind(a, size, card);
+    if(pos == -1){
+        printf("Students do not exist\n");
+    }
+    else{
+        printf("Student ID:%s\n", a[pos].ID);
+        printf("Name:%s\n", a[pos].name);
+        printf("Average Score:%.1lf\n", (double)(a[pos].score[0] + a[pos].score[1] + a[pos].score[2]) / 3);
+    }
+}
